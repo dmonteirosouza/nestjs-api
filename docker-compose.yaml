@@ -16,7 +16,7 @@ services:
     restart: always
     tty: true
     volumes:
-      - ./.docker/dbdata:/var/lib/mysql
+      - ./.docker/data:/var/lib/mysql
     environment:
       - MYSQL_DATABASE=fin
       - MYSQL_ROOT_PASSWORD=root
