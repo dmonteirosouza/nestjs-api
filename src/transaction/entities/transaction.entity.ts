@@ -1,5 +1,19 @@
 import { Column, DataType, Model, PrimaryKey, Table } from "sequelize-typescript";
 
+export enum TransactionCategory {
+    CATEGORY1 = 'category1',
+    CATEGORY2 = 'category2'
+}
+
+export const TransactionCategoryList: TransactionCategory[] = Object.values(TransactionCategory);
+
+export enum TransactionType {
+    CREDIT = 'credit',
+    DEBIT = 'debit'
+}
+
+export const TransactionTypeList: TransactionType[] = Object.values(TransactionType);
+
 @Table({
     tableName: 'transaction',
     createdAt: 'created_at',
@@ -31,7 +45,7 @@ export class Transaction extends Model {
     @Column({
         allowNull: false
     })
-    category: string;
+    category: TransactionCategory;
 
     @Column({
         allowNull: false,
@@ -42,5 +56,5 @@ export class Transaction extends Model {
     @Column({
         allowNull: false
     })
-    type: string;
+    type: TransactionType;
 }
