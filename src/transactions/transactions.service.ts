@@ -4,7 +4,7 @@ import { CreateTransactionDto } from './dto/create-transaction.dto';
 import { Transaction } from './entities/transaction.entity';
 
 @Injectable()
-export class TransactionService {
+export class TransactionsService {
 
   constructor(
     @InjectModel(Transaction) private transactionEntity: typeof Transaction

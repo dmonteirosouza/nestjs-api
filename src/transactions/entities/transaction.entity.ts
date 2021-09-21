@@ -1,4 +1,5 @@
-import { Column, DataType, Model, PrimaryKey, Table } from "sequelize-typescript";
+import { BelongsTo, Column, DataType, ForeignKey, Model, PrimaryKey, Table } from "sequelize-typescript";
+import { Account } from "src/accounts/entities/account.entity";
 
 export enum TransactionCategory {
     CATEGORY1 = 'category1',
@@ -15,7 +16,7 @@ export enum TransactionType {
 export const TransactionTypeList: TransactionType[] = Object.values(TransactionType);
 
 @Table({
-    tableName: 'transaction',
+    tableName: 'transactions',
     createdAt: 'created_at',
     updatedAt: 'updated_at',
 })
@@ -57,4 +58,15 @@ export class Transaction extends Model {
         allowNull: false
     })
     type: TransactionType;
+
+    @ForeignKey(() => Account)
+    @Column({
+        allowNull: false,
+        type: DataType.UUID,
+        defaultValue: DataType.UUIDV4
+    })
+    account_id: string;
+
+    @BelongsTo(() => Account)
+    account: Account;
 }
