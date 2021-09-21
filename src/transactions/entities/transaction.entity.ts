@@ -1,5 +1,6 @@
 import { BelongsTo, Column, DataType, ForeignKey, Model, PrimaryKey, Table } from "sequelize-typescript";
 import { Account } from "src/accounts/entities/account.entity";
+import { ToNumber } from "src/common/db/to-number.decorator";
 
 export enum TransactionCategory {
     CATEGORY1 = 'category1',
@@ -48,6 +49,7 @@ export class Transaction extends Model {
     })
     category: TransactionCategory;
 
+    @ToNumber
     @Column({
         allowNull: false,
         type: DataType.DECIMAL(10, 2)

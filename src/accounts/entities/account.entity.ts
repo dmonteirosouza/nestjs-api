@@ -1,4 +1,5 @@
 import { Column, DataType, Default, Model, PrimaryKey, Table } from "sequelize-typescript";
+import { ToNumber } from "../../common/db/to-number.decorator";
 
 @Table({
   tableName: 'accounts',
@@ -18,6 +19,7 @@ export class Account extends Model {
   })
   name: string;
 
+  @ToNumber
   @Default(0)
   @Column({
     allowNull: false,
